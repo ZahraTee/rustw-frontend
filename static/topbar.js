@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         clickHomeLink: () => dispatch(actions.showBuildResults()),
         clickBrowseLink: () => dispatch(actions.getSource(CONFIG.source_directory)),
-        clickBuild: () => dispatch(actions.doBuild()),
+        clickBuild: () => {dispatch(actions.doBuild()); dispatch(actions.showBuildResults())},
         getSearch: (needle) => dispatch(actions.getSearch(needle)),
     }
 };

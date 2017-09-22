@@ -53,7 +53,6 @@ export const rustwReducer = combineReducers({
 
 function page(state = { type: Page.START }, action) {
     switch (action.type) {
-        case DO_BUILD:
         case SHOW_BUILD_RESULTS:
             return  { type: Page.BUILD_RESULTS };
         case SHOW_ERROR:
@@ -86,6 +85,9 @@ function page(state = { type: Page.START }, action) {
                 lineStart: action.lineStart,
                 highlight: action.highlight
             };
+        // TODO: Refactor - we don't want to autodisplay
+        // the build results page when building for now
+        case DO_BUILD:
         case SHOW_SOURCE_DIR:
             return {
                 type: Page.SOURCE_DIR,
